@@ -1,0 +1,26 @@
+This automated test suite is written in python 2.7, using the following libraries:
+
+ - inittest (used to orchestrate the test suite testcases as well as for the testcases setup
+ (create a driver and launch firefox) and tear down (close the browser when the test is complete))
+ - selenium webdriver (used to access, fill in forms and click on buttons as a regular user would do to go through
+ the workflows)
+
+As per the assignment, the testcases will perform the following tests independently:
+
+ - register for personal account (I'm accessing the wrap authoring page directly bypassing clicking on 'FREE TRIAL')
+ - login, create a new wrap from a template and publish it
+
+ I used firefox firebug to pick up all the xpaths I needed for those workflow (I had a hard time finding a box or button ID or Name)
+
+Bugs to fix/Suggested improvements:
+
+ - Adjust the sleeping time in between requests (i.e. the time to complete the template creation can take 1 to 3-4 min depending on the connection) or find a way
+ to wait for the task to complete before launching the next one
+ - create random dummy accounts for the testing
+ - create a .conf file holding all the variables that need to be passed to the test script and parse them in the script
+ - create customized Exception log/message for each driver clicks or fill ins errors (right now everything is encapsulated into one try/except method. The
+ entire test is failing with a generic/non customized message)
+ - log the exception messages into a log file
+ - I'm using the same username and password for both test cases so if the registration fails in the first testcase the second testcase will fail automatically.
+ - The 2 workflow testcases are a pass or fail positive test cases only. Would need to add negative ones for the same workflow (i.e: inputting an existing email
+ address or inputting a wrong password and have the tests fail, ...)
